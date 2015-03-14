@@ -52,10 +52,22 @@ You can even change the entire format of the result:
 		'minutes' => 'Minuten',
 		'second'  => 'Sekunde',
 		'seconds' => 'Sekunden',
-		'format'  => '{minutesCount} {minutesLabel} – {secondsCount} {secondsLabel}
+		'format'  => '{minutesCount} {minutesLabel} – {secondsCount} {secondsLabel}'
 	));
 
 	?>
+
+You also can enable an alternative format that hides the minute label. This comes in handy if you have content that you can read under a minute.
+
+    <?php
+
+    echo $page->text()->readingtime(array(
+        'format' => '{minutesCount} {minutesLabel}, {secondsCount} {secondsLabel}',
+        'format.alt' => '{secondsCount} {secondsLabel}',
+        'format.alt.enable' => true
+    ));
+
+    ?>
 
 ## Authors
 
