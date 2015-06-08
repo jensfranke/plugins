@@ -1,5 +1,7 @@
 <?php 
 
+if(!c::get('cachebuster')) return;
+
 $kirby      = kirby();
 $cssHandler = kirby()->option('css.handler');
 $jsHandler  = kirby()->option('js.handler');
