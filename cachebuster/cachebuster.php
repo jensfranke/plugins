@@ -23,7 +23,7 @@ $kirby->options['css.handler'] = function($url, $media = false) use($cssHandler,
 
 };
 
-$kirby->options['js.handler'] = function($src, $async = false) use($jsHandler) {
+$kirby->options['js.handler'] = function($src, $async = false) use($jsHandler, $kirby) {
 
   if(is_array($src)) {
     $js = array();
@@ -31,11 +31,11 @@ $kirby->options['js.handler'] = function($src, $async = false) use($jsHandler) {
     return implode(PHP_EOL, $js) . PHP_EOL;
   }
 
-  $file = $kirby->roots()->index() . DS . $url;
+  $file = $kirby->roots()->index() . DS . $src;
 
   if(file_exists($file)) {
     $mod = f::modified($file);
-    $url = dirname($url) . '/' . f::name($url) . '.' . $mod . '.js';
+    $url = dirname($src) . '/' . f::name($src) . '.' . $mod . '.js';
   }
 
   return call($jsHandler, array($src, $async));
