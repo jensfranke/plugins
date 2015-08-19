@@ -40,6 +40,6 @@ $kirby->options['js.handler'] = function($src, $async = false) use($jsHandler, $
     $url = dirname($src) . '/' . f::name($src) . '.' . $mod . '.js';
   }
 
-  return call($jsHandler, array($src, $async));
+  return call($jsHandler, array($url, $async));
 
 };
